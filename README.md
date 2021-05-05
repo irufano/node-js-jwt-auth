@@ -20,7 +20,7 @@
   ```
 
   ```
-  Availbale Role is : mod, admin, user
+  Available role is : "admin", "admin", "user"
   ```
 
 - Signin with api signin
