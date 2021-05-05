@@ -3,7 +3,22 @@ const User = db.user;
 const Role = db.role;
 
 exports.allAccess = (req, res) => {
-  User.findAll()
+  User.findAll({
+    include: [
+        {
+          model: Role,
+          through: { attributes: [] },
+          attributes: {
+            include: ["name"],
+            exclude: ["createdAt", "updatedAt",],
+          },
+        },
+      ],
+      attributes: {
+        include: ["username"],
+        exclude: ["id", "password"],
+      },
+  })
     .then((users) => {
       res.status(200).send({ users: users });
     })
